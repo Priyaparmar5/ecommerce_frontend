@@ -20,19 +20,22 @@ function ViewProduct() {
     productId,
     name,
     imageUrl,
+   
     description,
     quantity,
     price
   ) => {
     const token = JSON.parse(localStorage.getItem("token"));
-
+    const customerId = token.id;
+    console.log(customerId,"iddddsss");
     if (!token) {
       alert("Please register or log in before adding items to the cart");
       return;
     }
     try {
       const response = await axios.post("http://localhost:3001/cart/add", {
-        customerId: token.id,
+       // cartId: token.id,
+        customerId ,
         productId,
         name,
         imageUrl,
@@ -106,6 +109,7 @@ function ViewProduct() {
                             className="btn btn-primary shadow-0 me-1"
                             onClick={() =>
                               handleAddToCart(
+                                
                                 product.id,
                                 product.name,
                                 product.imageUrl,

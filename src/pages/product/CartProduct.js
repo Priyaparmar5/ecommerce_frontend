@@ -20,9 +20,7 @@ function CartProduct() {
     }
     axios
       .get(`http://localhost:3001/cart/findall/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        
       })
       .then((response) => {
         console.log(response.data, "data find");
